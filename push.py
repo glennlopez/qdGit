@@ -29,6 +29,7 @@ def cmd(cmd):
 ##########################
 cmd('clear')
 print colors.BOLD + "Github Update Script" + colors.WHITE
+print "---------------------\n"
 comment = raw_input(colors.GREEN + "[!] " + colors.WHITE + "Type your update comment: ")
 cmd('git add *') 	#updates changes made inside files
 cmd('git add -u') 	#updated deleted files
