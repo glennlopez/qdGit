@@ -4,9 +4,10 @@
 # FIX FILE PERMISSIONS
 ##########################
 
-# Make these excecutable scripts
+# file types
 	ls *.sh | cat >> files.qdg
 	ls *.py | cat >> files.qdg
+	ls *.exp | cat >> files.qdg
 
 # permission setup routine
 	sed ':a;N;$!ba;s/\n/ /g' files.qdg > files_1.qdg

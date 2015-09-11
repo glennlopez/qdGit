@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/bin/bash
 '''
 Core script:
 sets up caching users git credentials
