@@ -1,6 +1,6 @@
 #!/bin/bash
 '''
-This script should setup and initialize a git project for you.
+Script for initial git setup routines
 Visit - https://help.github.com/articles/generating-ssh-keys
 to setup your SSH keys..
 													- github.com/glennlopez
@@ -18,7 +18,7 @@ to setup your SSH keys..
 
 # Install git:
 	echo "[+] Installing git..."
-	sudo apt-get install git
+	#sudo apt-get install git
 	clear
 	echo "[+] Setup Complete!"
 

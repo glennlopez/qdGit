@@ -21,5 +21,5 @@ Just run in terminal using the dot-slash expression. If you get a permission err
 | gitInit.sh     | initial setup routine |
 | gitSetup.sh   | additional setup routines |
 | push.py      | add, commit, and push all changes to git repo |
-| pull.py      | synchronizes your local copy of the git clone |
+| pull.py      | synchronizes your local copy with remote copy |
 | status.py      | displays all changes made to the repo |
