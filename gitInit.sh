@@ -22,7 +22,7 @@
 ##########################
 
 # Check to see if git is installed
-	PKG_OK=$(dpkg-query -W --showformat='${Status}\n' balasd|grep "install ok installed")
+	PKG_OK=$(dpkg-query -W --showformat='${Status}\n' git|grep "install ok installed")
 
 # Install git if its not installed
 	if [ "" == "$PKG_OK" ]; then
