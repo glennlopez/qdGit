@@ -40,4 +40,4 @@ cmd('git push') # comment this out and use the one below if this method doesnt w
 #cmd('ssh-add -D')	#removes identities - requires password after commit
 
 print
-print colors.YELLOW + "[!] " + colors.WHITE + "Update script done!"
+print colors.YELLOW + "[!] " + colors.WHITE + "Synchronization Complete!"
