@@ -1,7 +1,7 @@
 #!/bin/bash
 '''
-This is a menu driven script for people who dont want to bother learning how
-to use git on the terminal.
+This is a menu assisted script designed to be noob friendly to
+those who have minimal or no experience with git version control
 													- github.com/glennlopez
 '''
 

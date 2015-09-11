@@ -11,9 +11,9 @@ to setup your SSH keys..
 ##########################
 
 # Configure editor choice:
-	echo "Text Editor:"
-	echo "(Leave blank if not sure)"
+	echo "[+] Text Editor:"
 	read usrTxtEdit
+	echo "[!] (Leave blank if not sure)" #is a subtitle, change color
 	git config --global core.editor $usrTxtEdit -w
 
 # Add color to git:

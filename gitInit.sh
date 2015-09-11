@@ -11,7 +11,7 @@ to setup your SSH keys..
 # INITIAL SETUP
 ##########################
 
-# Fix file permissions :mandatory:
+# Fix file permissions
 	#chmod +x gitInit.sh, push.py, pull.py
 
 # Check to see if git package is installed: ???
