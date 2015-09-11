@@ -29,7 +29,7 @@ def cmd(cmd):
 ##########################
 cmd('clear')
 print colors.BOLD + "Github Update Script" + colors.WHITE
-comment = raw_input(colors.GREEN + "Type your update comment: " + colors.WHITE)
+comment = raw_input(colors.GREEN + "[!] " + colors.WHITE + "Type your update comment: ")
 cmd('git add *') 	#updates changes made inside files
 cmd('git add -u') 	#updated deleted files
 cmd('git status')	#displays changes to be pushed to github
@@ -40,4 +40,4 @@ cmd('git push') # comment this out and use the one below if this method doesnt w
 #cmd('ssh-add -D')	#removes identities - requires password after commit
 
 print
-print colors.YELLOW + "Update Complete!!" + colors.WHITE
+print colors.YELLOW + "[!] " + colors.WHITE + "Update Complete!!"
