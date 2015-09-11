@@ -11,12 +11,16 @@ to setup your SSH keys..
 # INITIAL SETUP
 ##########################
 
+# Fix file permissions :mandatory:
+	#chmod +x gitInit.sh, push.py, pull.py
+
 # Check to see if git package is installed: ???
 
 # Install git:
-	echo "Installing git..."
+	echo "[+] Installing git..."
 	sudo apt-get install git
 	clear
+	echo "[+] Setup Complete!"
 
 # Configure git user:
 	# setup username
@@ -34,10 +38,10 @@ to setup your SSH keys..
 
 
 ##########################
-# INITIALIZE GIT 
+# INITIALIZE GIT
 ##########################
 
-# Make a new directory: $mkdir Github
-# Go to the newly created folder: $cd Github
+# Make a new directory: $mkdir Git
+# Go to the newly created folder: $cd Git
 # Initialize current directory as a git project: $git init
-#
+# Clone a repository to the local drive: ???
