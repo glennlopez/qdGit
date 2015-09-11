@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 '''
-This script auto updates (pushes) all changes to github.
-Visit - https://help.github.com/articles/generating-ssh-keys
-to setup your SSH keys..
-													- github.com/glennlopez
+Core script:
+add, commit, then push all changes to remote repo
 '''
 import subprocess
 import os
@@ -42,4 +40,4 @@ cmd('git push') # comment this out and use the one below if this method doesnt w
 #cmd('ssh-add -D')	#removes identities - requires password after commit
 
 print
-print colors.YELLOW + "[!] " + colors.WHITE + "Update Complete!!"
+print colors.YELLOW + "[!] " + colors.WHITE + "Update script done!"

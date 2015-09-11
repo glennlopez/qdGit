@@ -5,10 +5,11 @@ those who have minimal or no experience with git version control
 													- github.com/glennlopez
 '''
 
-##########################
-# USER MENU
-##########################
 # Display current version
+
+##########################
+# Main Menu
+##########################
 
 # [A] Automagic Setup (recomended)
 # [1] Install Git

@@ -3,16 +3,15 @@
 Script for initial git setup routines
 Visit - https://help.github.com/articles/generating-ssh-keys
 to setup your SSH keys..
-													- github.com/glennlopez
+									- github.com/glennlopez
 '''
-
 
 ##########################
 # INITIAL SETUP
 ##########################
 
 # Fix file permissions
-	#chmod +x gitInit.sh, push.py, pull.py
+	chmod +x gitInit.sh, push.py, pull.py, cachePasswd.sh, genSSHkeys.sh, gitSetup.sh, qdGit.sh, status.py
 
 # Check to see if git package is installed: ???
 
@@ -21,6 +20,7 @@ to setup your SSH keys..
 	#sudo apt-get install git
 	clear
 	echo "[+] Setup Complete!"
+	clear
 
 # Configure git user:
 	# setup username
