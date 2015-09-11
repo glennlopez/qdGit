@@ -4,7 +4,7 @@
 
 qdGit
 =================
-This is a quick and dirty Git management script. Use it if you need to git things done quickly and don't care about the mess you leave behind. Somewhat reduces the time-to-market for new git users. Script not recommended during mission critical projects where bug tracking is important (like on a luner lander or any medical equipment software).
+This is a quick and dirty Git management script. Use it if you need to git things done quickly and don't care about the mess you leave behind. The script will add and push all changes in one commit entry so its not recommended for projects where bug tracking and detailed version control is important.
 
 > :paperclip: **Note:** this project is still it its development life cycle. Don't run the script without first reviewing the source files. Damages to your git repo and computer is unlikely using this script, but still... Murphy's Law.
 
