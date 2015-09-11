@@ -1,39 +1,76 @@
 #!/bin/bash
-'''
-Script for initial git setup routines
-Visit - https://help.github.com/articles/generating-ssh-keys
-to setup your SSH keys..
-									- github.com/glennlopez
-'''
+
+##########################
+# FIX FILE PERMISSIONS
+##########################
+
+# Make these excecutable scripts
+	ls *.sh | cat >> files.qdg
+	ls *.py | cat >> files.qdg
+
+# permission setup routine
+	sed ':a;N;$!ba;s/\n/ /g' files.qdg > files_1.qdg
+	dirFiles=$(<files_1.qdg)
+	chmod +x $dirFiles
+
+# cleanup routine
+	rm -f *.qdg
+
 
 ##########################
 # INITIAL SETUP
 ##########################
 
-# Fix file permissions
-	chmod +x gitInit.sh, push.py, pull.py, cachePasswd.sh, genSSHkeys.sh, gitSetup.sh, qdGit.sh, status.py
+# Check to see if git is installed
+	PKG_OK=$(dpkg-query -W --showformat='${Status}\n' balasd|grep "install ok installed")
 
-# Check to see if git package is installed: ???
+# Install git if its not installed
+	if [ "" == "$PKG_OK" ]; then
+		echo "Installing missing package..."
+		sudo apt-get --force-yes --yes install git
+	fi
 
-# Install git:
-	echo "[+] Installing git..."
-	#sudo apt-get install git
-	clear
-	echo "[+] Setup Complete!"
+	echo "[!] Initial setup complete."
+	sleep 1
+	echo
+
+	# progress bar
+	echo "Starting user configuration:"
+	echo -ne '#####                     (33%)\r'
+	sleep 0.5
+	echo -ne '#############             (66%)\r'
+	sleep 0.5
+	echo -ne '#######################   (100%)\r'
+	sleep 1
+	echo -ne '\n'
+
 	clear
 
 # Configure git user:
 	# setup username
-	echo "User Name:"
+	echo -n "[+] User Name: "
 	read usrUname
 	git config --global user.name $usrUname
-	clear
 
 # Configure email:
 	# setup email
-	echo "Email:"
+	echo -n "[+] Email: "
 	read usrEmail
 	git config --global user.email $usrEmail
+	echo
+	echo "[!] User setup complete."
+	sleep 1
+
+	# progress bar
+	echo "Starting SSH configuration:"
+	echo -ne '#####                     (33%)\r'
+	sleep 0.5
+	echo -ne '#############             (66%)\r'
+	sleep 0.5
+	echo -ne '#######################   (100%)\r'
+	sleep 1
+	echo -ne '\n'
+
 	clear
 
 
