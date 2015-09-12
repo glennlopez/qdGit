@@ -4,7 +4,7 @@
 # FIX FILE PERMISSIONS
 ##########################
 
-# file types
+# file types permission
 	ls *.sh | cat >> files.qdg
 	ls *.py | cat >> files.qdg
 	ls *.exp | cat >> files.qdg
@@ -14,7 +14,7 @@
 	dirFiles=$(<files_1.qdg)
 	chmod +x $dirFiles
 
-# cleanup routine
+# tmp file cleanup routine
 	rm -f *.qdg
 
 
@@ -28,6 +28,7 @@
 # Install git if its not installed
 	if [ "" == "$PKG_OK" ]; then
 		echo "Installing missing package..."
+		echo
 		sudo apt-get --force-yes --yes install git
 	fi
 
@@ -72,14 +73,5 @@
 	sleep 1
 	echo -ne '\n'
 
-	clear
-
-
-##########################
-# INITIALIZE GIT
-##########################
-
-# Make a new directory: $mkdir Git
-# Go to the newly created folder: $cd Git
-# Initialize current directory as a git project: $git init
-# Clone a repository to the local drive: ???
+#	clear
+#	./genSSHkey.sh
