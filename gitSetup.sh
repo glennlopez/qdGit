@@ -8,6 +8,7 @@ to setup your SSH keys..
 
 ##########################
 # ADDITIONAL SETUP
+# test
 ##########################
 
 # Configure editor choice:
