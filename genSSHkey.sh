@@ -1,6 +1,5 @@
 #!/bin/bash
 '
-Ref:
 https://help.github.com/articles/generating-ssh-keys/
 '
 
