@@ -20,13 +20,14 @@ pBar() {
 # FIX FILE PERMISSIONS
 ##########################
 
-# file type to fix
+# file name collection routine
 	ls *.sh | cat >> files.qdg
 	ls *.py | cat >> files.qdg
 	ls *.exp | cat >> files.qdg
 
-# permission setup routine
 	sed ':a;N;$!ba;s/\n/ /g' files.qdg > files_1.qdg
+
+# permission setup routine
 	dirFiles=$(<files_1.qdg)
 	chmod +x $dirFiles
 
