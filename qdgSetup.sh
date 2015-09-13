@@ -1,10 +1,4 @@
 #!/bin/bash
-'''
-This script performs additional setup routines for you.
-Visit - https://help.github.com/articles/generating-ssh-keys
-to setup your SSH keys..
-													- github.com/glennlopez
-'''
 
 ##########################
 # ADDITIONAL SETUP

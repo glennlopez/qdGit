@@ -1,10 +1,26 @@
 #!/bin/bash
 
 ##########################
+# FUNCTIONS
+##########################
+
+# progress bar
+pBar() {
+	echo "Starting the next step:"
+	echo -ne '#####                     (33%)\r'
+	sleep 0.5
+	echo -ne '#############             (66%)\r'
+	sleep 0.5
+	echo -ne '#######################   (100%)\r'
+	sleep 1
+	echo -ne '\n'
+}
+
+##########################
 # FIX FILE PERMISSIONS
 ##########################
 
-# file types permission
+# file type to fix
 	ls *.sh | cat >> files.qdg
 	ls *.py | cat >> files.qdg
 	ls *.exp | cat >> files.qdg
@@ -19,7 +35,7 @@
 
 
 ##########################
-# INITIAL SETUP
+# INSTALL MISSING PACKAGES
 ##########################
 
 # Check to see if git is installed
@@ -32,20 +48,16 @@
 		sudo apt-get --force-yes --yes install git
 	fi
 
+
+##########################
+# INITIAL SETUP
+##########################
+
 	echo "[!] Initial setup complete."
 	sleep 1
 	echo
 
-	# progress bar
-	echo "Starting user configuration:"
-	echo -ne '#####                     (33%)\r'
-	sleep 0.5
-	echo -ne '#############             (66%)\r'
-	sleep 0.5
-	echo -ne '#######################   (100%)\r'
-	sleep 1
-	echo -ne '\n'
-
+	pBar
 	clear
 
 # Configure git user:
@@ -63,15 +75,6 @@
 	echo "[!] User setup complete."
 	sleep 1
 
-	# progress bar
-	echo "Starting SSH configuration:"
-	echo -ne '#####                     (33%)\r'
-	sleep 0.5
-	echo -ne '#############             (66%)\r'
-	sleep 0.5
-	echo -ne '#######################   (100%)\r'
-	sleep 1
-	echo -ne '\n'
-
-#	clear
+	pBar
+	clear
 #	./genSSHkey.sh
