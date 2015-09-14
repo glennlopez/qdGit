@@ -68,6 +68,9 @@ pBar() {
 # INITIAL SETUP
 ##########################
 
+# Make git colorful
+	git config --global color.ui true
+
 # Configure username:
 	echo -n "[+] Git Username: "
 	read usrUname
@@ -88,5 +91,8 @@ pBar() {
 	echo -n "[+] Github Repository Name: "
 	read prjName
 	git remote set-url origin git@github.com:$usrUname/$prjName.git
+	clear
+	ssh-keygen -t rsa -b 4096 -C $usrEmail
+
 	echo "[!] Setup complete."
 	sleep 1
