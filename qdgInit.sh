@@ -6,18 +6,18 @@
 
 # progress bar
 pBar() {
-	printf "Wait: Starting the next step"
-	printf -ne '###                       \r'
-	sleep 0.5
-	printf -ne '########                  \r'
-	sleep 0.5
-	printf -ne '#############             \r'
-	sleep 0.5
-	printf -ne '##################        \r'
-	sleep 0.5
-	printf -ne '#######################   \r'
+	echo "Wait: Starting the next step"
+	echo -ne '###                       \r'
+	sleep 0.2
+	echo -ne '########                  \r'
+	sleep 0.2
+	echo -ne '#############             \r'
+	sleep 0.2
+	echo -ne '##################        \r'
+	sleep 0.2
+	echo -ne '#######################   \r'
 	sleep 1
-	printf -ne '\n'
+	echo -ne '\n'
 }
 
 ##########################
@@ -50,39 +50,43 @@ pBar() {
 
 # Install git if its not installed
 	if [ "" == "$PKG_OK" ]; then
-		printf "Installing missing package..."
-		printf
+		echo "Installing missing package..."
+		echo
 		sudo apt-get --force-yes --yes install git
 	fi
+
+	echo "[!] Initial setup complete."
+	sleep 1
+	echo
+
+	pBar
+	clear
+
 
 
 ##########################
 # INITIAL SETUP
 ##########################
 
-	printf "[!] Initial setup complete."
-	sleep 1
-	printf
-
-	pBar
-	clear
-
-# Configure git user:
-	# setup username
-	printf -n "[+] User Name: "
+# Configure username:
+	echo -n "[+] Git Username: "
 	read usrUname
 	git config --global user.name $usrUname
 
 # Configure email:
-	# setup email
-	printf -n "[+] Email: "
+	echo -n "[+] Git Email: "
 	read usrEmail
 	git config --global user.email $usrEmail
-	printf
-	printf "[!] User setup complete."
+	echo
+
+# Configure project name
+	echo "Your repo name is required for the last step. Its the last word in the url for your repo if stored in github."
+	echo
+	echo "For example:"
+	echo "in Http://github.com/glennlopez/qdGit <-- qdGit is the repo name."
+	echo
+	echo -n "[+] Github Repository Name: "
+	read prjName
+	git remote set-url origin git@github.com:$usrUname/$prjName.git
+	echo "[!] Setup complete."
 	sleep 1
-
-	pBar
-
-# Fix git orgin permission error
- #git remote set-url origin git@github.com:USERNAME/PROJECTNAME.GIT
