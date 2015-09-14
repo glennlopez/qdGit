@@ -83,16 +83,16 @@ pBar() {
 	echo
 
 # Configure project name
-	echo "Your repo name is required for the last step. Its the last word in the url for your repo if stored in github."
-	echo
-	echo "For example:"
-	echo "in Http://github.com/glennlopez/qdGit <-- qdGit is the repo name."
-	echo
-	echo -n "[+] Github Repository Name: "
-	read prjName
-	git remote set-url origin git@github.com:$usrUname/$prjName.git
-	clear
-	ssh-keygen -t rsa -b 4096 -C $usrEmail
+	#echo "Your repo name is required for the last step. Its the last word in the url for your repo if stored in github."
+	#echo
+	#echo "For example:"
+	#echo "in Http://github.com/glennlopez/qdGit <-- qdGit is the repo name."
+	#echo
+	#echo -n "[+] Github Repository Name: "
+	#read prjName
+	#git remote set-url origin #git@github.com:$usrUname/$prjName.git
+	#clear
+	#ssh-keygen -t rsa -b 4096 -C $usrEmail
 
 	echo "[!] Setup complete."
 	sleep 1
