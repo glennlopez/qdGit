@@ -32,8 +32,10 @@ pBar() {
 	sed ':a;N;$!ba;s/\n/ /g' files.qdg > files_1.qdg
 
 # permission setup routine
-	dirFiles=$(<files_1.qdg)
-	chmod +x $dirFiles
+	#dirFiles=$(<files_1.qdg)
+	#chmod +x $dirFiles
+		# code golfing the above cmds
+		chmod +x $(<files_1.qdg)
 
 # tmp file cleanup routine
 	rm -f *.qdg
@@ -81,5 +83,6 @@ pBar() {
 	sleep 1
 
 	pBar
-	clear
-#	./genSSHkey.sh
+
+# Fix git orgin permission error
+ #git remote set-url origin git@github.com:USERNAME/PROJECTNAME.GIT
