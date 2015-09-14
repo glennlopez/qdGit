@@ -6,21 +6,25 @@
 
 # progress bar
 pBar() {
-	echo "Starting the next step:"
-	echo -ne '#####                     (33%)\r'
+	printf "Wait: Starting the next step"
+	printf -ne '###                       \r'
 	sleep 0.5
-	echo -ne '#############             (66%)\r'
+	printf -ne '########                  \r'
 	sleep 0.5
-	echo -ne '#######################   (100%)\r'
+	printf -ne '#############             \r'
+	sleep 0.5
+	printf -ne '##################        \r'
+	sleep 0.5
+	printf -ne '#######################   \r'
 	sleep 1
-	echo -ne '\n'
+	printf -ne '\n'
 }
 
 ##########################
 # FIX FILE PERMISSIONS
 ##########################
 
-# file name collection routine
+# filename collection routine
 	ls *.sh | cat >> files.qdg
 	ls *.py | cat >> files.qdg
 	ls *.exp | cat >> files.qdg
@@ -44,8 +48,8 @@ pBar() {
 
 # Install git if its not installed
 	if [ "" == "$PKG_OK" ]; then
-		echo "Installing missing package..."
-		echo
+		printf "Installing missing package..."
+		printf
 		sudo apt-get --force-yes --yes install git
 	fi
 
@@ -54,26 +58,26 @@ pBar() {
 # INITIAL SETUP
 ##########################
 
-	echo "[!] Initial setup complete."
+	printf "[!] Initial setup complete."
 	sleep 1
-	echo
+	printf
 
 	pBar
 	clear
 
 # Configure git user:
 	# setup username
-	echo -n "[+] User Name: "
+	printf -n "[+] User Name: "
 	read usrUname
 	git config --global user.name $usrUname
 
 # Configure email:
 	# setup email
-	echo -n "[+] Email: "
+	printf -n "[+] Email: "
 	read usrEmail
 	git config --global user.email $usrEmail
-	echo
-	echo "[!] User setup complete."
+	printf
+	printf "[!] User setup complete."
 	sleep 1
 
 	pBar
