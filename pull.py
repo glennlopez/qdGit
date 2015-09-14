@@ -29,7 +29,7 @@ def cmd(cmd):
 ##########################
 cmd('clear')
 print colors.BOLD + "Github Pull Script" + colors.WHITE
-print colors.GREEN + "[!] Wait: " + colors.WHITE + "Synchronizing with github..."
+print colors.GREEN + "[!] " + colors.WHITE + "Synchronizing with github..."
 cmd('git pull') # comment this out if this doesnt work
 #cmd('git pull orgin master')		#pull changes from github
 print
