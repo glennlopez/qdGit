@@ -10,7 +10,7 @@ The script will add and push all changes in one commit entry so its not recommen
 
 
 ### How setup
-<b>Just run in terminal using dot-slash:</b> Spawn a terminal using <i>CTRL + ALT + T</i> and paste `chmod +x setup.sh`. Run a dot-slash command on `./setup.sh` to run the initial setup script.
+Just run in terminal using dot-slash: Spawn a terminal using <i>CTRL + ALT + T</i> and paste `chmod +x setup.sh`. Run a dot-slash command on `./setup.sh` to run the initial setup script.
 
 ### How to use
 Place the 3 scripts in your project and do a dot-slash on push.py to push all changes to github or pull.py to synchronizes your local copy with your github repository.
