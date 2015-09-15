@@ -33,5 +33,5 @@ print colors.GREEN + "[!] " + colors.WHITE + "Synchronizing with github..."
 cmd('git pull') # comment this out if this doesnt work
 #cmd('git pull orgin master')		#pull changes from github
 print
-print colors.YELLOW + "[!] Pull routine complete:" + colors.WHITE + " check the logs above for more info."
+print colors.YELLOW + "[!] Pull complete:" + colors.WHITE + " check the logs above for more info."
 # end of script
