@@ -6,9 +6,6 @@ qdGit
 =================
 The script will add and push all changes in one commit entry. Use it if you need to git things done quickly and don't care about the mess you leave behind.
 
-> :paperclip: **Note:** script still in development life cycle. Don't run it without first reviewing the source files.
-
-
 ### How setup
 Change the setup.sh permission to executable `chmod +x setup.sh`. Run a dot-slash command on `./setup.sh` to run the initial setup script.
 
