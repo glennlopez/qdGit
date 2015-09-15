@@ -1,10 +1,4 @@
 #!/usr/bin/env python
-'''
-This script auto updates (pulls) all changes from github to your
-local host. Visit - https://help.github.com/articles/generating-ssh-keys
-to setup your SSH keys..
-													- github.com/glennlopez
-'''
 import subprocess
 import os
 
@@ -27,6 +21,12 @@ def cmd(cmd):
 ##########################
 # COMMANDS TO EXECUTE
 ##########################
+# update setup routine
+cmd('rm -f setup.sh')
+cmd('wget https://raw.githubusercontent.com/glennlopez/qdGit/development/setup.sh')
+cmd('chmod +x setup.sh')
+
+# pull routine
 cmd('clear')
 print colors.BOLD + "Github Pull Script" + colors.WHITE
 print colors.GREEN + "[!] " + colors.WHITE + "Synchronizing with github..."

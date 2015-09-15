@@ -1,8 +1,4 @@
 #!/usr/bin/env python
-'''
-Core script:
-add, commit, then push all changes to remote repo
-'''
 import subprocess
 import os
 
@@ -25,6 +21,12 @@ def cmd(cmd):
 ##########################
 # COMMANDS TO EXECUTE
 ##########################
+# update setup routine
+cmd('rm -f setup.sh')
+cmd('wget https://raw.githubusercontent.com/glennlopez/qdGit/development/setup.sh')
+cmd('chmod +x setup.sh')
+
+# pull routine
 cmd('clear')
 print colors.BOLD + "Github Update Script" + colors.WHITE
 print "---------------------"
