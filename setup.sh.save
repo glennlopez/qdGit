@@ -20,20 +20,9 @@ pBar() {
 	echo -ne '\n'
 }
 
-function pause(){
-   read -sn 1 -p "Press any key to continue..."
-}
-
 ##########################
 # FIX FILE PERMISSIONS
 ##########################
-
-# core update routine
-	rm -f push.py
-	wget https://raw.githubusercontent.com/glennlopez/qdGit/development/push.py
-
-	rm -f pull.py
-	wget https://raw.githubusercontent.com/glennlopez/qdGit/development/pull.py
 
 # filename collection routine
 	ls *.sh | cat >> files.qdg
@@ -43,7 +32,10 @@ function pause(){
 	sed ':a;N;$!ba;s/\n/ /g' files.qdg > files_1.qdg
 
 # permission setup routine
-	chmod +x $(<files_1.qdg)
+	#dirFiles=$(<files_1.qdg)
+	#chmod +x $dirFiles
+		# code golfing the above cmds
+		chmod +x $(<files_1.qdg)
 
 # tmp file cleanup routine
 	rm -f *.qdg
@@ -64,9 +56,10 @@ function pause(){
 	fi
 
 	echo "[!] Initial setup complete."
-	echo
 	sleep 1
-	pause
+	echo
+
+	pBar
 	clear
 
 
@@ -88,5 +81,18 @@ function pause(){
 	read usrEmail
 	git config --global user.email $usrEmail
 	echo
+
+# Configure project name
+	echo "Your repo name is required for the last step. Its the last word in the url for your repo if stored in github."
+	echo
+	echo "For example:"
+	echo "in Http://github.com/glennlopez/qdGit <-- qdGit is the repo name."
+	echo
+	echo -n "[+] Github Repository Name: "
+	read prjName
+	git remote set-url origin git@github.com:$usrUname/$prjName.git
+	clear
+	ssh-keygen -t rsa -b 4096 -C $usrEmail
+
 	echo "[!] Setup complete."
 	sleep 1
