@@ -29,8 +29,7 @@ cmd('wget https://raw.githubusercontent.com/glennlopez/qdGit/stable/setup.sh && 
 cmd('clear')
 print colors.BOLD + "Github Pull Script" + colors.WHITE
 print colors.GREEN + "[!] " + colors.WHITE + "Synchronizing with github..."
-cmd('git pull') # comment this out if this doesnt work
-#cmd('git pull orgin master')		#pull changes from github
+cmd('git pull')
 print
 print colors.YELLOW + "[!] Routine complete:" + colors.WHITE + " check the logs above for more info."
 # end of script
