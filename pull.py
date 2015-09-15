@@ -14,6 +14,7 @@ class colors:
     UNDERLINE = '\033[4m'
 
 # CMD FUNCTION - for running shell scripts
+#test
 def cmd(cmd):
 	os.system(cmd)
 
