@@ -38,3 +38,4 @@ cmd("git commit -m '"+comment+"'")
 cmd('git push') # comment this out and use the one below if this method doesnt work
 print
 print colors.YELLOW + "[!] Routine complete:" + colors.WHITE + " check the logs above for more info."
+# end of script
