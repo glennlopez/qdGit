@@ -23,7 +23,7 @@ def cmd(cmd):
 ##########################
 # update setup routine
 cmd('rm -f setup.sh')
-cmd('wget https://raw.githubusercontent.com/glennlopez/qdGit/development/setup.sh')
+cmd('wget https://raw.githubusercontent.com/glennlopez/qdGit/stable/setup.sh')
 cmd('chmod +x setup.sh')
 
 # pull routine
