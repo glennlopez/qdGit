@@ -29,10 +29,11 @@ function pause(){
 ##########################
 
 # core update routine
-	wget https://raw.githubusercontent.com/glennlopez/qdGit/stable/setup.sh && rm -f setup.sh.1 && rm -f setup.sh && wget https://raw.githubusercontent.com/glennlopez/qdGit/stable/push.sh && chmod +x setup.sh
-
-	wget https://raw.githubusercontent.com/glennlopez/qdGit/stable/setup.sh && rm -f setup.sh.1 && rm -f setup.sh && wget https://raw.githubusercontent.com/glennlopez/qdGit/stable/setup.sh && chmod +x pull.sh
-
+	rm -f push.py
+	wget https://raw.githubusercontent.com/glennlopez/qdGit/development/push.py
+	echo
+	rm -f pull.py
+	wget https://raw.githubusercontent.com/glennlopez/qdGit/development/pull.py
 
 # filename collection routine
 	ls *.sh | cat >> files.qdg
