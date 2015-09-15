@@ -24,11 +24,6 @@ def cmd(cmd):
 # update setup routine
 cmd('wget https://raw.githubusercontent.com/glennlopez/qdGit/stable/setup.sh && rm -f setup.sh.1 && rm -f setup.sh && wget https://raw.githubusercontent.com/glennlopez/qdGit/stable/setup.sh && chmod +x setup.sh')
 
-#cmd('wget https://raw.githubusercontent.com/glennlopez/qdGit/stable/setup.sh')
-#cmd('rm -f setup.sh.1')
-#cmd('rm -f setup.sh')
-#cmd('wget https://raw.githubusercontent.com/glennlopez/qdGit/stable/setup.sh')
-#cmd('chmod +x setup.sh')
 
 # pull routine
 cmd('clear')
@@ -46,4 +41,4 @@ cmd('git push') # comment this out and use the one below if this method doesnt w
 #cmd('ssh-add -D')	#removes identities - requires password after commit
 
 print
-print colors.YELLOW + "[!] Push complete:" + colors.WHITE + " check the logs above for more info."
+print colors.YELLOW + "[!] Routine complete:" + colors.WHITE + " check the logs above for more info."
