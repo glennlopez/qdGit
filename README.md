@@ -4,13 +4,13 @@
 
 qdGit
 =================
-The script will add and push all changes in one commit entry so its not recommended for projects where bug tracking and detailed version control is important. Use it if you need to git things done quickly and don't care about the mess you leave behind. Useful for people who don't know how to manage git under a terminal.
+The script will add and push all changes in one commit entry. Use it if you need to git things done quickly and don't care about the mess you leave behind.
 
-> :paperclip: **Note:** this project is still in it its development life cycle. Don't run the script without first reviewing the source files. Damages to your git repo and computer is unlikely using this script, but still... Murphy's Law.
+> :paperclip: **Note:** script still in development life cycle. Don't run it without first reviewing the source files.
 
 
 ### How setup
-Just run in terminal using dot-slash: Spawn a terminal using <i>CTRL + ALT + T</i> and paste `chmod +x setup.sh`. Run a dot-slash command on `./setup.sh` to run the initial setup script.
+Change the setup.sh permission to executable `chmod +x setup.sh`. Run a dot-slash command on `./setup.sh` to run the initial setup script.
 
 ### How to use
 Place the 3 scripts in your project and do a dot-slash on push.py to push all changes to github or pull.py to synchronizes your local copy with your github repository.

@@ -5,7 +5,7 @@
 ##########################
 
 # progress bar
-pBar() {
+pBar(){
 	echo "Wait: Starting the next step"
 	echo -ne '###                       \r'
 	sleep 0.2
@@ -31,14 +31,13 @@ function pause(){
 # core update routine
 	rm -f push.py
 	wget https://raw.githubusercontent.com/glennlopez/qdGit/development/push.py
-
+	echo
 	rm -f pull.py
 	wget https://raw.githubusercontent.com/glennlopez/qdGit/development/pull.py
 
 # filename collection routine
 	ls *.sh | cat >> files.qdg
 	ls *.py | cat >> files.qdg
-	ls *.exp | cat >> files.qdg
 
 	sed ':a;N;$!ba;s/\n/ /g' files.qdg > files_1.qdg
 
