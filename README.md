@@ -6,12 +6,13 @@ qdGit
 =================
 The script will add and push all changes in one commit entry. Use it if you need to git things done quickly and don't care about the mess you leave behind.
 
-### How setup
-Change the setup.sh permission to executable `chmod +x setup.sh`. Run a dot-slash command on `./setup.sh` to run the initial setup script.
+> :paperclip: This script only simplifies pushing and pulling to git. Initializing git from the present working directory will be added soon.
 
 ### How to use
-Place the 3 scripts in your project and do a dot-slash on push.py to push all changes to github or pull.py to synchronizes your local copy with your github repository.
+Place qdGit.sh into your project directory, then run the script. Running qdGit.sh will place the latest pull.py and push.py scripts into your project directory which you can use to quickly push or pull changes to your github. You can run qdGit.sh again to update the core scripts.
 
+### How setup
+Type `chmod +x qdGit.sh` into terminal to change qdGit.sh's permission to be executable. Run using `./qdGit.sh` after you've changed the file permission.
 
 ### Script Summary
 
