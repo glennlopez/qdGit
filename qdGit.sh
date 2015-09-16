@@ -1,5 +1,12 @@
 #!/bin/bash
 #test
+
+#check script version
+	#update if its outdated
+	#if 1 == 1 skip the update
+		#else rune the update routine
+
+
 ##########################
 # FUNCTIONS
 ##########################
