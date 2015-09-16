@@ -11,7 +11,7 @@ The script will add and push all changes in one commit entry. Use it if you need
 ### How to use
 Place qdGit.sh into your project directory, then run the script. Running qdGit.sh will place the latest pull.py and push.py into your project directory, which you can use to quickly push or pull changes by:
 
-Running `./push.py` to push commits to your git repository
+Running `./push.py` to push commits to your git repository \n
 Running `./pull.py` to synchronize your local copy with your repo
 
 ### How setup
