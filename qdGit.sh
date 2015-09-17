@@ -56,14 +56,14 @@ function pause(){
 ##########################
 
 # permission setup routine
-	ls *.sh | cat >> files.qdg
-	ls *.py | cat >> files.qdg
+	#ls *.sh | cat >> files.qdg
+	#ls *.py | cat >> files.qdg
 
-	sed ':a;N;$!ba;s/\n/ /g' files.qdg > files_1.qdg
-	chmod +x $(<files_1.qdg)
+	#sed ':a;N;$!ba;s/\n/ /g' files.qdg > files_1.qdg
+	#chmod +x $(<files_1.qdg)
 
 # cleanup routine
-	rm -f *.qdg
+	#rm -f *.qdg
 
 
 ##########################
