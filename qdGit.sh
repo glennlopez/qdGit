@@ -1,6 +1,4 @@
 #!/bin/bash
-
-#check to see if update directory exists
 if [ ! -d "qdg_update" ]; then
 	mkdir qdg_update
 	cd qdg_update
@@ -12,16 +10,32 @@ fi
 ##########################
 # SELF UPDATE ROUTINE
 ##########################
-	#mkdir qdg_update
-	#cd qdg_update
-	#mv version version.old
-	#wget version from core branch
+	if [ ! -d "qdg_update" ]; then
+		mkdir qdg_update
+		cd qdg_update
+		echo 0 > version
+		cd ..
+	fi
+
+	cd qdg_update
+
+	#store local version into a var
+	loc_ver=$(<version)
+	mv version version.old
+	wget --quiet https://raw.githubusercontent.com/glennlopez/qdGit/core/version
+
+	#store remote version into a var
+	rem_ver=$(<version)
+
 	#if version.old <= version then skip update routine
-	#else run the update routine
+	if [[ loc_ver == rem_ver ]]; then
 		#wget update.sh from core branch
 		#rm -version.old
 		#run update.sh in a new terminal
 		#exit current script for update
+	fi
+
+
 	#rm version
 	#mv version.old version
 
