@@ -35,14 +35,18 @@ if [ "$?" == 0 ]; then
 	#if version.old < version then skip update routine
 	if [[ $loc_ver < $rem_ver ]]; then
 		echo "run the update...."
-		#wget update.sh from core branch
+		wget --quiet https://raw.githubusercontent.com/glennlopez/qdGit/core/update.sh
+		chmod +x update.sh
+		gnome-terminal -e ./update.sh; exit
+		#spawn a new terminal
 		#run update.sh in a new terminal
-		#exit current script for update
 	fi
 
 	rm -f version.old
 
-##---------------------------------------------------
+##---------PLACE OLD SCRIPTS HERE-----------------
+
+
 else
 		clear
 		echo 'ERROR: Failed to communicate with github repo for. Script requires a working internet connection.'
