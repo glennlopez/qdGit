@@ -1,32 +1,43 @@
 #!/bin/bash
-#test
 
-#check script version
-	#update if its outdated
-	#if 1 == 1 skip the update
-		#else rune the update routine
+#check to see if update directory exists
+if [ ! -d "qdg_update" ]; then
+	mkdir qdg_update
+	cd qdg_update
+	echo 0 > version
+	cd ..
+fi
 
+##---------------paste this in push.py, pull.py-------
+##########################
+# SELF UPDATE ROUTINE
+##########################
+	#mkdir qdg_update
+	#cd qdg_update
+	#mv version version.old
+	#wget version from core branch
+	#if version.old <= version then skip update routine
+	#else run the update routine
+		#wget update.sh from core branch
+		#rm -version.old
+		#run update.sh in a new terminal
+		#exit current script for update
+	#rm version
+	#mv version.old version
+
+			#---------update.sh---------------
+			#check for proper connection
+			#rm pull.py and push.py
+			#wget pull.py and push.py from github
+			#
+
+##---------------------------------------------------
 
 ##########################
 # FUNCTIONS
 ##########################
 
-# progress bar
-pBar(){
-	echo "Wait: Starting the next step"
-	echo -ne '###                       \r'
-	sleep 0.2
-	echo -ne '########                  \r'
-	sleep 0.2
-	echo -ne '#############             \r'
-	sleep 0.2
-	echo -ne '##################        \r'
-	sleep 0.2
-	echo -ne '#######################   \r'
-	sleep 1
-	echo -ne '\n'
-}
-
+# interaction requirred
 function pause(){
    read -sn 1 -p "Press any key to continue..."
 }
@@ -34,16 +45,6 @@ function pause(){
 ##########################
 # INITIAL SETUP ROUTINE
 ##########################
-
-# download or update core files
-	#checks to see if it can download before deleting files
-
-	# pull.py
-	https://raw.githubusercontent.com/glennlopez/qdGit/core/pull.py && rm -f pull.py && https://raw.githubusercontent.com/glennlopez/qdGit/core/pull.py || wget https://raw.githubusercontent.com/glennlopez/qdGit/core/pull.py && rm -f pull.py.1
-
-	# push.py
-	https://raw.githubusercontent.com/glennlopez/qdGit/core/push.py && rm -f push.py && https://raw.githubusercontent.com/glennlopez/qdGit/core/push.py ||
-	wget https://raw.githubusercontent.com/glennlopez/qdGit/core/push.py && rm -f push.py.1
 
 # permission setup routine
 	ls *.sh | cat >> files.qdg
@@ -57,7 +58,7 @@ function pause(){
 
 
 ##########################
-# INSTALL MISSING PACKAGES
+# INSTALL DEPENDENCIES
 ##########################
 
 # Check to see if git is installed
@@ -79,7 +80,7 @@ function pause(){
 
 
 ##########################
-# INITIAL SETUP
+# GITHUB SETUP ROUTINE
 ##########################
 
 # Make git colorful
