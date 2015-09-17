@@ -1,25 +1,52 @@
 #!/bin/bash
-#test
+
+# Do not run the script if network cannot communicate with repo
+wget --spider --quiet https://raw.githubusercontent.com/glennlopez/qdGit/core/version
+if [ "$?" == 0 ]; then
+
+##########################
+# SELF UPDATE ROUTINE
+##########################
+
+	#check to see if update directory exists
+	if [ ! -d "qdg_update" ]; then
+		mkdir qdg_update
+		cd qdg_update
+		echo 0 > version
+		cd ..
+	fi
+
+	cd qdg_update
+
+	#store local version into a var
+	loc_ver=$(<version)
+	echo "local version: "$loc_ver
+
+	#rename local version file for version comparison
+	mv version version.old
+
+	#download new version info
+	wget --quiet https://raw.githubusercontent.com/glennlopez/qdGit/core/version
+
+	#store remote version into a var
+	rem_ver=$(<version)
+	echo "remote version: "$rem_ver
+
+	#if version.old < version then skip update routine
+	if [[ $loc_ver < $rem_ver ]]; then
+		echo "run the update...."
+		wget --quiet https://raw.githubusercontent.com/glennlopez/qdGit/core/update.sh
+		chmod +x update.sh
+		nohup ./update.sh > /dev/null 2>&1 &
+	fi
+
+	rm -f version.old
+
 ##########################
 # FUNCTIONS
 ##########################
 
-# progress bar
-pBar(){
-	echo "Wait: Starting the next step"
-	echo -ne '###                       \r'
-	sleep 0.2
-	echo -ne '########                  \r'
-	sleep 0.2
-	echo -ne '#############             \r'
-	sleep 0.2
-	echo -ne '##################        \r'
-	sleep 0.2
-	echo -ne '#######################   \r'
-	sleep 1
-	echo -ne '\n'
-}
-
+# interaction requirred
 function pause(){
    read -sn 1 -p "Press any key to continue..."
 }
@@ -27,16 +54,6 @@ function pause(){
 ##########################
 # INITIAL SETUP ROUTINE
 ##########################
-
-# download or update core files
-	#checks to see if it can download before deleting files
-
-	# pull.py
-	https://raw.githubusercontent.com/glennlopez/qdGit/core/pull.py && rm -f pull.py && https://raw.githubusercontent.com/glennlopez/qdGit/core/pull.py || wget https://raw.githubusercontent.com/glennlopez/qdGit/core/pull.py && rm -f pull.py.1
-
-	# push.py
-	https://raw.githubusercontent.com/glennlopez/qdGit/core/push.py && rm -f push.py && https://raw.githubusercontent.com/glennlopez/qdGit/core/push.py ||
-	wget https://raw.githubusercontent.com/glennlopez/qdGit/core/push.py && rm -f push.py.1
 
 # permission setup routine
 	ls *.sh | cat >> files.qdg
@@ -50,7 +67,7 @@ function pause(){
 
 
 ##########################
-# INSTALL MISSING PACKAGES
+# INSTALL DEPENDENCIES
 ##########################
 
 # Check to see if git is installed
@@ -72,7 +89,7 @@ function pause(){
 
 
 ##########################
-# INITIAL SETUP
+# GITHUB SETUP ROUTINE
 ##########################
 
 # Make git colorful
@@ -90,3 +107,9 @@ function pause(){
 	echo
 	echo "[!] Setup complete."
 	sleep 1
+
+else
+		clear
+		echo 'ERROR: Failed to communicate with github repo for. Script requires a working internet connection.'
+		echo
+fi
