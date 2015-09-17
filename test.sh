@@ -37,9 +37,7 @@ if [ "$?" == 0 ]; then
 		echo "run the update...."
 		wget --quiet https://raw.githubusercontent.com/glennlopez/qdGit/core/update.sh
 		chmod +x update.sh
-		nohup update.sh > /dev/null 2>&1 &
-		cd ..
-		exit
+		nohup ./update.sh > /dev/null 2>&1 &
 		#spawn a new terminal
 		#run update.sh in a new terminal
 	fi
