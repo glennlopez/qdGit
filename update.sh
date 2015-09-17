@@ -3,7 +3,7 @@
 #if [ "$?" == 0 ]; then
 	echo 0 > itworked
 	cd ..
-	echo 0 > thisalsoworked
+	echo 0 > poopingwork
 #check for proper connection
 #rm pull.py and push.py
 #wget pull.py and push.py from github
