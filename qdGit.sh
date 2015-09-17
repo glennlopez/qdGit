@@ -1,15 +1,14 @@
 #!/bin/bash
-if [ ! -d "qdg_update" ]; then
-	mkdir qdg_update
-	cd qdg_update
-	echo 0 > version
-	cd ..
-fi
 
-##---------------paste this in push.py, pull.py-------
+# Do not run the script if network cannot communicate with repo
+wget --spider --quiet https://raw.githubusercontent.com/glennlopez/qdGit/core/version
+if [ "$?" == 0 ]; then
+
 ##########################
 # SELF UPDATE ROUTINE
 ##########################
+
+	#check to see if update directory exists
 	if [ ! -d "qdg_update" ]; then
 		mkdir qdg_update
 		cd qdg_update
@@ -21,31 +20,29 @@ fi
 
 	#store local version into a var
 	loc_ver=$(<version)
+	echo "local version: "$loc_ver
+
+	#rename local version file for version comparison
 	mv version version.old
+
+	#download new version info
 	wget --quiet https://raw.githubusercontent.com/glennlopez/qdGit/core/version
 
 	#store remote version into a var
 	rem_ver=$(<version)
+	echo "remote version: "$rem_ver
 
-	#if version.old <= version then skip update routine
-	if [[ loc_ver == rem_ver ]]; then
-		#wget update.sh from core branch
-		#rm -version.old
+	#if version.old < version then skip update routine
+	if [[ $loc_ver < $rem_ver ]]; then
+		echo "run the update...."
+		wget --quiet https://raw.githubusercontent.com/glennlopez/qdGit/core/update.sh
+		chmod +x update.sh
+		nohup ./update.sh > /dev/null 2>&1 &
+		#spawn a new terminal
 		#run update.sh in a new terminal
-		#exit current script for update
 	fi
 
-
-	#rm version
-	#mv version.old version
-
-			#---------update.sh---------------
-			#check for proper connection
-			#rm pull.py and push.py
-			#wget pull.py and push.py from github
-			#
-
-##---------------------------------------------------
+	rm -f version.old
 
 ##########################
 # FUNCTIONS
@@ -112,3 +109,9 @@ function pause(){
 	echo
 	echo "[!] Setup complete."
 	sleep 1
+
+else
+		clear
+		echo 'ERROR: Failed to communicate with github repo for. Script requires a working internet connection.'
+		echo
+fi
