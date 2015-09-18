@@ -9,13 +9,22 @@
 #debug = 0
 ############################
 
-# store local version to variable
-awk '{ if ($1 ~ /#version/) print local $3}' push.sh > tmp
-loc_ver=$(<tmp)
+# Check network then store script version to variables
+wget --spider --quiet https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh
 
-# store remote version to variable
-curl --silent -q https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh | awk '{ if ($1 ~ /#version/) print local $3}' > tmp
-rem_ver=$(<tmp)
+if [ "$?" == 0 ]; then
+
+	# store local version to variable
+	awk '{ if ($1 ~ /#version/) print local $3}' push.sh > tmp
+	loc_ver=$(<tmp)
+
+	# store remote version to variable
+	curl --silent -q https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh | awk '{ if ($1 ~ /#version/) print local $3}' > tmp
+	rem_ver=$(<tmp)
+else
+	loc_ver=$(FAILED TO FETCH)
+	rem_ver=$(FAILED TO FETCH)
+fi
 
 
 ##########################
@@ -60,6 +69,10 @@ function pause(){
 # Run without autoupdate
 if [ "$1" = -noupdate ]; then
 	echo 'no updates'
+
+elif [ "$1" = -ver ]; then
+	echo 'Local version:'$loc_ver
+	echo 'Remote version:'$rem_ver
 
 # Force an update
 elif [ "$1" = -update ]; then
