@@ -22,7 +22,7 @@ Whi='\e[0;37m';     BWhi='\e[1;37m';    UWhi='\e[4;37m';    IWhi='\e[0;97m';    
 
 # Error Codes:
 	error503=$(echo -e "${BRed}[!]${Whi} Failed to fetch")
-	error404=$(echo 'ERROR: CANNOT ESTABLISH NETWORK CONNECTION')
+	error404=$(echo -e "${BRed}[!]${Whi} No network connection")
 
 # Check network before fetching version number
 wget --spider --quiet https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh
@@ -66,6 +66,7 @@ function auto_update(){
 # Push changes to repo
 function push(){
 	echo $error503
+	echo $error404
 }
 
 # Any key interaction
