@@ -21,7 +21,7 @@ Cya='\e[0;36m';     BCya='\e[1;36m';    UCya='\e[4;36m';    ICya='\e[0;96m';    
 Whi='\e[0;37m';     BWhi='\e[1;37m';    UWhi='\e[4;37m';    IWhi='\e[0;97m';    BIWhi='\e[1;97m';   On_Whi='\e[47m';    On_IWhi='\e[0;107m';
 
 # Error Codes:
-	error503=$(echo '${Yel}ERROR: FAILED TO FETCH')
+	error503=$(echo -e "${BRed}[!]${Whi} Failed to fetch")
 	error404=$(echo 'ERROR: CANNOT ESTABLISH NETWORK CONNECTION')
 
 # Check network before fetching version number
@@ -66,7 +66,6 @@ function auto_update(){
 # Push changes to repo
 function push(){
 	echo $error503
-	echo -e "${Yel}blue ${Red}red ${RCol}etc...."
 }
 
 # Any key interaction
