@@ -80,7 +80,7 @@ function push_all(){
 	git status
 	git commit -m $comment
 	git push
-	echo -e -n "${BPur}[x]${Whi} Script routine complete!"
+	echo -e "${BPur}[x]${Whi} Script routine complete!"
 
 }
 
