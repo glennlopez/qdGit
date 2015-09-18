@@ -70,11 +70,17 @@ function txtHeader(){
 }
 
 # Push changes to repo
-function push(){
+function push_all(){
 	clear
 	txtHeader
-	echo 'blah'
-
+	echo -e -n "${BGre}[+]${Whi} Type your commit comment: "
+	read comment
+	git add *
+	git add -u
+	git status
+	git commit -m $comment
+	git push
+	echo -e -n "${BPur}[x]${Whi} Script routine complete!"
 
 }
 
@@ -109,7 +115,7 @@ if [ "$?" == 0 ]; then
 
 		# Default task
 	else
-		push
+		push_all
 		auto_update
 	fi
 else
