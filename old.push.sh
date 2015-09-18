@@ -5,7 +5,7 @@
 #git = github.com
 #author = glennlopez
 #filename = push.sh
-#version = 0.8
+#version = 0.1
 #debug = 0
 ############################
 
@@ -34,6 +34,9 @@ function auto_update(){
 			echo "This script was outdated!"
 			echo "It's been updated from: v" $loc_ver "to" "v"$rem_ver
 			echo
+		else
+			rm -f push.sh
+			mv old.push.sh push.sh
 		fi
 
 		chmod +x push.sh
