@@ -63,8 +63,9 @@ function auto_update(){
 	chmod +x push.sh
 }
 
+# Textual header formating
 function txtHeader(){
-	echo -e "Github Update Script v"$loc_ver
+	echo -e "${BWhi}Github Update Script v"$loc_ver ${Whi}
 	echo -e "-------------------------------"
 }
 
@@ -72,6 +73,7 @@ function txtHeader(){
 function push(){
 	clear
 	txtHeader
+	echo 'blah'
 
 
 }
@@ -84,7 +86,7 @@ function pause(){
 
 
 ##########################
-# MAIN ROUTINE
+# SCRIPT ROUTINE
 ##########################
 
 # Don't run script unless connection is established
