@@ -40,8 +40,10 @@ function auto_update(){
 	fi
 }
 
-if [ "$1" != nu ]; then
+# bypass auto update routine
+if [ "$1" != --bypass ]; then
 	auto_update
 else
 	echo 'no update'
+	# git push routine
 fi
