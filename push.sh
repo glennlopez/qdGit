@@ -78,7 +78,7 @@ function push_all(){
 	git add *
 	git add -u
 	git status
-	git commit -m '$comment'
+	git commit -m '\$comment\'
 	git push
 	echo
 	echo -e "${BPur}[x]${Whi} Script routine complete!"
