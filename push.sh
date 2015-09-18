@@ -41,15 +41,15 @@ function auto_update(){
 }
 
 # bypass auto update routine
-if [ "$1" != -noupdate ]; then
-	auto_update
-elif [ "$1" == -update ]; then
+if [ "$1" = -noupdate ]; then
+	echo 'no updates'
+elif [ "$1" = -update ]; then
 	echo
 	rm -f push.sh
 	wget --quiet https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh
 	echo "Script was force to update"
 	echo
 else
-	echo 'no update'
+	auto_update
 	# git push routine
 fi
