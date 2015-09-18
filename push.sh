@@ -10,19 +10,15 @@
 ############################
 
 function auto_update(){
-	# check network connection
+	# don't update unless connection is established
 	wget --spider --quiet https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh
 	if [ "$?" == 0 ]; then
 
-		# local script
+		# store local version variable
 		awk '{ if ($1 ~ /#version/) print local $3}' push.sh > tmp
 		loc_ver=$(<tmp)
 
-		#mv push.sh old.push.sh
-		# remote script
-		#wget --quiet https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh
-		#awk '{ if ($1 ~ /#version/) print local $3}' push.sh > tmp
-
+		# store remote version variable
 		curl --silent -q https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh | awk '{ if ($1 ~ /#version/) print local $3}' > tmp
 		rem_ver=$(<tmp)
 
@@ -31,8 +27,7 @@ function auto_update(){
 			echo
 			rm -f push.sh
 			wget --quiet https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh
-			echo "This script was outdated!"
-			echo "It's been updated from: v" $loc_ver "to" "v"$rem_ver
+			echo "Script was updated from: v" $loc_ver "to" "v"$rem_ver
 			echo
 		fi
 
