@@ -27,7 +27,7 @@ function auto_update(){
 			echo
 			rm -f push.sh
 			wget --quiet https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh
-			echo "Script was updated from: v" $loc_ver "to" "v"$rem_ver
+			echo "Script was updated from: v"$loc_ver "to" "v"$rem_ver
 			echo
 		fi
 
