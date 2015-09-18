@@ -9,16 +9,22 @@
 #debug = 0
 ############################
 
+
+##########################
+# FUNCTIONS
+##########################
+
+# Auto update script if outdated
 function auto_update(){
 	# don't update unless connection is established
 	wget --spider --quiet https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh
 	if [ "$?" == 0 ]; then
 
-		# store local version variable
+		# store local version to variable
 		awk '{ if ($1 ~ /#version/) print local $3}' push.sh > tmp
 		loc_ver=$(<tmp)
 
-		# store remote version variable
+		# store remote version to variable
 		curl --silent -q https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh | awk '{ if ($1 ~ /#version/) print local $3}' > tmp
 		rem_ver=$(<tmp)
 
@@ -40,17 +46,30 @@ function auto_update(){
 	fi
 }
 
-# bypass auto update routine
+# Any key interaction
+function pause(){
+   read -sn 1 -p "Press any key to continue..."
+}
+
+
+
+##########################
+#
+##########################
+
+# Run without autoupdate
 if [ "$1" = -noupdate ]; then
 	echo 'no updates'
+
+# Force an update
 elif [ "$1" = -update ]; then
-	echo
 	rm -f push.sh
 	wget --quiet https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh
 	chmod +x push.sh
-	echo "Script was force to update"
+	echo "Script forced to update!"
 	echo
+
+# Run normal routine
 else
 	auto_update
-	# git push routine
 fi
