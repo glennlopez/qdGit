@@ -1,5 +1,5 @@
 #!/bin/bash
-source col
+source col.sh
 
 ######~METADATA~############
 #proj = qdGit
