@@ -17,8 +17,8 @@ function auto_update(){
 		# local script
 		awk '{ if ($1 ~ /#version/) print local $3}' push.sh > tmp
 		loc_ver=$(<tmp)
-		mv push.sh old.push.sh
 
+		#mv push.sh old.push.sh
 		# remote script
 		#wget --quiet https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh
 		#awk '{ if ($1 ~ /#version/) print local $3}' push.sh > tmp
