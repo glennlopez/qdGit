@@ -5,9 +5,11 @@
 #git = github.com
 #author = glennlopez
 #filename = push.sh
-#version = 0.1
+#version = 0.8
 #debug = 0
 ############################
+
+error404=$(echo 'FAILED TO FETCH')
 
 # Check network before fetching version number
 wget --spider --quiet https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh
@@ -22,8 +24,8 @@ if [ "$?" == 0 ]; then
 	curl --silent -q -k https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh | awk '{ if ($1 ~ /#version/) print local $3}' > tmp
 	rem_ver=$(<tmp)
 else
-	loc_ver=$(FAILED TO FETCH)
-	rem_ver=$(FAILED TO FETCH)
+	loc_ver=$error404
+	rem_ver=$error404
 fi
 
 # remove tmp file used to store version number
