@@ -11,7 +11,7 @@
 
 # Error Codes:
 	error503=$(echo 'FAILED TO FETCH')
-	error404=$(echo 'CANNOT ESTABLISH CONNECTION')
+	error404=$(echo 'CANNOT ESTABLISH NETWORK CONNECTION')
 
 # Check network before fetching version number
 wget --spider --quiet https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh
@@ -56,7 +56,7 @@ function auto_update(){
 		chmod +x push.sh
 
 	else
-		error404
+		echo $error404
 	fi
 }
 
