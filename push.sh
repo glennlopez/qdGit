@@ -10,8 +10,8 @@
 ############################
 
 # Error Codes:
-	error503=$(echo 'FAILED TO FETCH')
-	error404=$(echo 'CANNOT ESTABLISH NETWORK CONNECTION')
+	error503=$(echo 'ERROR: FAILED TO FETCH')
+	error404=$(echo 'ERROR: CANNOT ESTABLISH NETWORK CONNECTION')
 
 # Check network before fetching version number
 wget --spider --quiet https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh
@@ -40,24 +40,22 @@ rm -f tmp
 
 # Auto update script if outdated
 function auto_update(){
-	# don't update unless connection is established
-	wget --spider --quiet https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh
-	if [ "$?" == 0 ]; then
-
-		# compare versions
-		if [[ $loc_ver < $rem_ver ]]; then
-			rm -f push.sh
-			wget --quiet https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh
-			echo "Script was updated from: v"$loc_ver "to" "v"$rem_ver
-			echo
-		fi
-
-		# post update routine
-		chmod +x push.sh
-
-	else
-		echo $error404
+	# compare versions
+	if [[ $loc_ver < $rem_ver ]]; then
+		rm -f push.sh
+		wget --quiet https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh
+		echo "Script was updated from: v"$loc_ver "to" "v"$rem_ver
+		echo
 	fi
+
+	# post update routine
+	chmod +x push.sh
+}
+
+# Push changes to repo
+function push(){
+	echo 'pushing to git..'
+
 }
 
 # Any key interaction
@@ -71,23 +69,30 @@ function pause(){
 # MAIN ROUTINE
 ##########################
 
-# Run without autoupdate
-if [ "$1" = -noupdate ]; then
-	echo 'no updates'
+# Don't run unless connection is established
+wget --spider --quiet https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh
+if [ "$?" == 0 ]; then
 
-elif [ "$1" = -ver ]; then
-	echo 'Local version: '$loc_ver
-	echo 'Remote version: '$rem_ver
+	# Run without autoupdate
+	if [ "$1" = -noupdate ]; then
+		echo 'no updates'
 
-# Force an update
-elif [ "$1" = -update ]; then
-	rm -f push.sh
-	wget --quiet https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh
-	chmod +x push.sh
-	echo "Script forced to update!"
-	echo
+	elif [ "$1" = -ver ]; then
+		echo 'Local version: '$loc_ver
+		echo 'Remote version: '$rem_ver
 
-# Default task
+		# Force an update
+	elif [ "$1" = -update ]; then
+		rm -f push.sh
+		wget --quiet https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh
+		chmod +x push.sh
+		echo "Script forced to update!"
+
+		# Default task
+	else
+		auto_update
+		push
+	fi
 else
-	auto_update
+	echo $error404
 fi
