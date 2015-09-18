@@ -47,6 +47,7 @@ elif [ "$1" = -update ]; then
 	echo
 	rm -f push.sh
 	wget --quiet https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh
+	chmod +x push.sh
 	echo "Script was force to update"
 	echo
 else
