@@ -41,7 +41,7 @@ function auto_update(){
 }
 
 # bypass auto update routine
-if [ "$1" != --bypass ]; then
+if [ "$1" != -noupdate ]; then
 	auto_update
 else
 	echo 'no update'
