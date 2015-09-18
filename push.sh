@@ -5,7 +5,7 @@
 #git = github.com
 #author = glennlopez
 #filename = push.sh
-#version = 0.8
+#version = 0.1
 #debug = 0
 ############################
 
@@ -19,7 +19,7 @@ if [ "$?" == 0 ]; then
 	loc_ver=$(<tmp)
 
 	# store remote version to variable
-	curl --silent -q https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh | awk '{ if ($1 ~ /#version/) print local $3}' > tmp
+	curl --silent -q -k https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh | awk '{ if ($1 ~ /#version/) print local $3}' > tmp
 	rem_ver=$(<tmp)
 else
 	loc_ver=$(FAILED TO FETCH)
@@ -70,9 +70,9 @@ function pause(){
 if [ "$1" = -noupdate ]; then
 	echo 'no updates'
 
-elif [ "$1" = -ver ]; then
-	echo 'Local version: '$loc_ver
-	echo 'Remote version: '$rem_ver
+#elif [ "$1" = -ver ]; then
+#	echo 'Local version: '$loc_ver
+#	echo 'Remote version: '$rem_ver
 
 # Force an update
 elif [ "$1" = -update ]; then
