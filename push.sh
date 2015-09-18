@@ -75,14 +75,15 @@ function push_all(){
 	txtHeader
 	echo -e -n "${BGre}[+]${Whi} Type your commit comment: "
 	read comment
-	com=$(< echo "'$comment'")
+	#echo "\""$comment"\""
+
 	git add *
 	git add -u
 	git status
-	git commit -m $com
+	git commit -m '''$comment'''
 	git push
 	echo
-	echo -e "${BPur}[x]${Whi} Script routine complete!"
+	echo -e "${BCya}[DONE]${Whi} Script routine complete!"
 
 }
 
