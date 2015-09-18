@@ -9,7 +9,7 @@
 #debug = 0
 ############################
 
-# Check network then store script version to variables
+# Check network before fetching version number
 wget --spider --quiet https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh
 
 if [ "$?" == 0 ]; then
@@ -53,7 +53,7 @@ function auto_update(){
 		chmod +x push.sh
 
 	else
-		echo 'Skipping update: Cannot establish connection to remote git repository.'
+		echo 'Skipping update: Cannot establish connection with git repository.'
 	fi
 }
 
