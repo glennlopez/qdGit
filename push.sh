@@ -65,8 +65,7 @@ function auto_update(){
 
 # Push changes to repo
 function push(){
-	echo $error503
-	echo $error404
+	echo 'none'
 }
 
 # Any key interaction
@@ -100,8 +99,12 @@ if [ "$?" == 0 ]; then
 
 		# Default task
 	else
+		clear
+		pause
 		auto_update
 		push
+		echo $error503
+		echo $error404
 	fi
 else
 	echo $error404
