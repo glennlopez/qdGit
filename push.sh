@@ -9,7 +9,9 @@
 #debug = 0
 ############################
 
-error404=$(echo 'FAILED TO FETCH')
+# Error Codes:
+	error503=$(echo 'FAILED TO FETCH')
+	error404=$(echo 'CANNOT ESTABLISH CONNECTION')
 
 # Check network before fetching version number
 wget --spider --quiet https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh
@@ -24,8 +26,8 @@ if [ "$?" == 0 ]; then
 	curl --silent -q -k https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh | awk '{ if ($1 ~ /#version/) print local $3}' > tmp
 	rem_ver=$(<tmp)
 else
-	loc_ver=$error404
-	rem_ver=$error404
+	loc_ver=$error503
+	rem_ver=$error503
 fi
 
 # remove tmp file used to store version number
@@ -54,7 +56,7 @@ function auto_update(){
 		chmod +x push.sh
 
 	else
-		echo 'Skipping update: Cannot establish connection with git repository.'
+		error404
 	fi
 }
 
