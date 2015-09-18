@@ -9,6 +9,14 @@
 #debug = 0
 ############################
 
+# store local version to variable
+awk '{ if ($1 ~ /#version/) print local $3}' push.sh > tmp
+loc_ver=$(<tmp)
+
+# store remote version to variable
+curl --silent -q https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh | awk '{ if ($1 ~ /#version/) print local $3}' > tmp
+rem_ver=$(<tmp)
+
 
 ##########################
 # FUNCTIONS
@@ -19,14 +27,6 @@ function auto_update(){
 	# don't update unless connection is established
 	wget --spider --quiet https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh
 	if [ "$?" == 0 ]; then
-
-		# store local version to variable
-		awk '{ if ($1 ~ /#version/) print local $3}' push.sh > tmp
-		loc_ver=$(<tmp)
-
-		# store remote version to variable
-		curl --silent -q https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh | awk '{ if ($1 ~ /#version/) print local $3}' > tmp
-		rem_ver=$(<tmp)
 
 		# compare versions
 		if [[ $loc_ver < $rem_ver ]]; then
@@ -54,7 +54,7 @@ function pause(){
 
 
 ##########################
-#
+# MAIN ROUTINE
 ##########################
 
 # Run without autoupdate
@@ -69,7 +69,7 @@ elif [ "$1" = -update ]; then
 	echo "Script forced to update!"
 	echo
 
-# Run normal routine
+# Default task
 else
 	auto_update
 fi
