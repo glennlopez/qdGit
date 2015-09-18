@@ -68,7 +68,6 @@ function auto_update(){
 
 # Push changes to repo
 function push(){
-	clear
 
 }
 
