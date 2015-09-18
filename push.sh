@@ -44,7 +44,6 @@ function auto_update(){
 
 		# compare versions
 		if [[ $loc_ver < $rem_ver ]]; then
-			echo
 			rm -f push.sh
 			wget --quiet https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh
 			echo "Script was updated from: v"$loc_ver "to" "v"$rem_ver
