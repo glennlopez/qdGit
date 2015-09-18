@@ -8,10 +8,10 @@
 #version = 0.8
 #debug = 0
 ############################
-
+. col
 # Error Codes:
 	error503=$(echo 'ERROR: FAILED TO FETCH')
-	error404=$(echo 'ERROR: CANNOT ESTABLISH NETWORK CONNECTION')
+	error404=$(echo 'ERROR: CANNOT \ESTABLISH NETWORK CONNECTION')
 
 # Check network before fetching version number
 wget --spider --quiet https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh
@@ -54,7 +54,7 @@ function auto_update(){
 
 # Push changes to repo
 function push(){
-	echo 'pushing to git..'
+	clear
 
 }
 
@@ -69,10 +69,9 @@ function pause(){
 # MAIN ROUTINE
 ##########################
 
-# Don't run unless connection is established
+# Don't run script unless connection is established
 wget --spider --quiet https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh
 if [ "$?" == 0 ]; then
-
 	# Run without autoupdate
 	if [ "$1" = -noupdate ]; then
 		echo 'no updates'
@@ -91,6 +90,7 @@ if [ "$?" == 0 ]; then
 		# Default task
 	else
 		auto_update
+		echo -e "${Blu}blue ${Red}red ${RCol}etc...."
 		push
 	fi
 else
