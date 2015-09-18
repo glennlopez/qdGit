@@ -1,10 +1,15 @@
 #!/bin/bash
-##########################
+
+######~METADATA~############
+#proj = qdGit
+#git = github.com
+#author = glennlopez
+#filename = push.sh
 #version = 0.8
 #debug = 0
-##########################
+############################
 
-function script_update(){
+function auto_update(){
 	# check network connection
 	wget --spider --quiet https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh
 	if [ "$?" == 0 ]; then
@@ -37,6 +42,4 @@ function script_update(){
 	fi
 }
 
-script_update
-echo
-echo 'script complete'
+auto_update
