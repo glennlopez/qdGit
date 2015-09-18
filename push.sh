@@ -63,15 +63,23 @@ function auto_update(){
 	chmod +x push.sh
 }
 
-# Push changes to repo
-function push(){
-	echo 'none'
+function txtHeader(){
+	echo -e "Github Update Script v"$loc_ver
+	echo -e "-------------------------------"
 }
 
-# Any key interaction
+# Push changes to repo
+function push(){
+	clear
+	txtHeader
+
+
+}
+
 function pause(){
    read -sn 1 -p "Press any key to continue..."
 }
+
 
 
 
@@ -99,12 +107,8 @@ if [ "$?" == 0 ]; then
 
 		# Default task
 	else
-		clear
-		pause
-		auto_update
 		push
-		echo $error503
-		echo $error404
+		auto_update
 	fi
 else
 	echo $error404
