@@ -71,8 +71,8 @@ if [ "$1" = -noupdate ]; then
 	echo 'no updates'
 
 elif [ "$1" = -ver ]; then
-	echo 'Local version:'$loc_ver
-	echo 'Remote version:'$rem_ver
+	echo 'Local version: '$loc_ver
+	echo 'Remote version: '$rem_ver
 
 # Force an update
 elif [ "$1" = -update ]; then
