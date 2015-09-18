@@ -26,6 +26,9 @@ else
 	rem_ver=$(FAILED TO FETCH)
 fi
 
+# remove tmp file used to store version number
+rm -f tmp
+
 
 ##########################
 # FUNCTIONS
@@ -48,7 +51,6 @@ function auto_update(){
 
 		# post update routine
 		chmod +x push.sh
-		rm -f tmp
 
 	else
 		echo 'Skipping update: Cannot establish connection to remote git repository.'
