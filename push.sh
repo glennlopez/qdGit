@@ -65,6 +65,7 @@ function auto_update(){
 
 # Push changes to repo
 function push(){
+	echo '${Yel}ERROR: FAILED TO FETCH${Whi}'
 	echo -e "${BICya}blue ${Red}red ${RCol}etc...."
 }
 
