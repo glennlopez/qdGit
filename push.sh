@@ -20,13 +20,17 @@ function auto_update(){
 		mv push.sh old.push.sh
 
 		# remote script
-		wget --quiet https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh
-		awk '{ if ($1 ~ /#version/) print local $3}' push.sh > tmp
+		#wget --quiet https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh
+		#awk '{ if ($1 ~ /#version/) print local $3}' push.sh > tmp
+
+		curl --silent -q https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh | awk '{ if ($1 ~ /#version/) print local $3}' > tmp
 		rem_ver=$(<tmp)
 
 		# compare versions
 		if [[ $loc_ver < $rem_ver ]]; then
-			rm -f old.push.sh
+			echo
+			rm -f push.sh
+			wget --quiet https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh
 			echo "This script was outdated!"
 			echo "It's been updated from: v" $loc_ver "to" "v"$rem_ver
 			echo
