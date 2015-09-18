@@ -12,7 +12,7 @@
 function auto_update(){
 	# check network connection
 	wget --spider --quiet https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh
-	if [ "$?" == 0 || "$1" == update]; then
+	if [ "$?" == 0]; then
 
 		# local script
 		awk '{ if ($1 ~ /#version/) print local $3}' push.sh > tmp
