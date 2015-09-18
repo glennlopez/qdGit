@@ -31,11 +31,17 @@ function auto_update(){
 			echo
 		fi
 
+		# post update routine
 		chmod +x push.sh
 		rm -f tmp
+
 	else
 		echo 'Skipping update: Cannot establish connection to remote git repository.'
 	fi
 }
 
-auto_update
+if [ "$1" != nu ]; then
+	auto_update
+else
+	echo 'no update'
+fi
