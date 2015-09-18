@@ -5,7 +5,7 @@
 #git = github.com
 #author = glennlopez
 #filename = push.sh
-#version = 0.8
+#version = 0.1
 #debug = 0
 ############################
 
@@ -43,6 +43,12 @@ function auto_update(){
 # bypass auto update routine
 if [ "$1" != -noupdate ]; then
 	auto_update
+elif [ "$1" = -update ]; then
+	echo
+	rm -f push.sh
+	wget --quiet https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh
+	echo "Script was force to update from: v"$loc_ver "to" "v"$rem_ver
+	echo
 else
 	echo 'no update'
 	# git push routine
