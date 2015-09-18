@@ -22,10 +22,9 @@ function script_update(){
 		# compare versions for update
 		if [[ $loc_ver < $rem_ver ]]; then
 			rm -f old.push.sh
-			echo 'You were running an older version of' $0
-			echo $0 'was updated to version' $rem_ver
+			echo "We've updated this script from:"
+			echo 'v'$loc_ver 'to' 'v'$rem_ver
 		else
-			echo 'Local version is up to date.'
 			rm -f push.sh
 			mv old.push.sh push.sh
 		fi
