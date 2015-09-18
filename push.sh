@@ -12,7 +12,7 @@
 function auto_update(){
 	# check network connection
 	wget --spider --quiet https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh
-	if [ "$?" == 0 ]; then
+	if [ "$?" == 0 || "$1" == update]; then
 
 		# local script
 		awk '{ if ($1 ~ /#version/) print local $3}' push.sh > tmp
@@ -24,7 +24,7 @@ function auto_update(){
 		awk '{ if ($1 ~ /#version/) print local $3}' push.sh > tmp
 		rem_ver=$(<tmp)
 
-		# compare versions for update
+		# compare versions
 		if [[ $loc_ver < $rem_ver ]]; then
 			rm -f old.push.sh
 			echo "This script was outdated!"
