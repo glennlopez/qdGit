@@ -21,7 +21,7 @@ Cya='\e[0;36m';     BCya='\e[1;36m';    UCya='\e[4;36m';    ICya='\e[0;96m';    
 Whi='\e[0;37m';     BWhi='\e[1;37m';    UWhi='\e[4;37m';    IWhi='\e[0;97m';    BIWhi='\e[1;97m';   On_Whi='\e[47m';    On_IWhi='\e[0;107m';
 
 # Error Codes:
-	error503=$(echo -e "${BRed}[!]${Whi} Failed to fetch")
+	error503=$(echo "Failed to fetch")
 	error404=$(echo -e "${BRed}[!]${Whi} No network connection")
 
 # Check network before fetching version number
@@ -46,10 +46,10 @@ rm -f tmp
 
 
 ##########################
-# FUNCTIONS
+# SUBROUTINES
 ##########################
 
-# Auto update script if outdated
+# Script update routine
 function auto_update(){
 	# compare versions
 	if [[ $loc_ver < $rem_ver ]]; then
@@ -63,27 +63,37 @@ function auto_update(){
 	chmod +x push.sh
 }
 
-# Textual header formating
-function txtHeader(){
-	echo -e "${BWhi}Github Update Script v"$loc_ver ${Whi}
-	echo -e "-------------------------------"
+# Initial setup routine
+function init_setup(){
+	git config --global push.default simple
 }
 
-# Push changes to repo
+# Push routine
 function push_all(){
-	clear
-	txtHeader
-	echo -e -n "${BGre}[+]${Whi}"
-	echo -n " Describe the update in one word: "
-	read comment
-	git add *
-	git add -u
-	git status
-	git commit -m "\"$comment"\"
-	git push
-	echo
-	echo -e "${BCya}[DONE]${Whi} Script routine complete!"
+        clear
+        txtHeader
+        echo -e -n "${BGre}[x]${Whi}"
+        echo -n " Describe your commit: "
+        read comment
+        git add *
+        git add -u
+        git status
+        git commit -m "\"$comment"\"
+        git push
+        echo
+        echo -e "${BCya}[DONE]${Whi} Script routine complete!"
 
+}
+
+
+########################
+# FUNCTIONS
+#######################
+
+# Textual header formating
+function txtHeader(){
+	echo -e "${BWhi}qdGit: Quick & Dirty Git v"$loc_ver ${Whi}
+	echo -e "----------------------------------"
 }
 
 function pause(){
