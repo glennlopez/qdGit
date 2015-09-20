@@ -73,14 +73,13 @@ function txtHeader(){
 function push_all(){
 	clear
 	txtHeader
-	echo -e -n "${BGre}[+]${Whi} Type your commit comment: "
+	echo -e -n "${BGre}[+]${Whi}"
+	echo -n " Describe the update in one word: "
 	read comment
-	com=$comment
-	echo $com
 	git add *
 	git add -u
 	git status
-	git commit '\'$com'\'
+	git commit -m "\"$comment"\"
 	git push
 	echo
 	echo -e "${BCya}[DONE]${Whi} Script routine complete!"
