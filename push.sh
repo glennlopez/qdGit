@@ -1,15 +1,16 @@
 #!/bin/bash
 
-######~METADATA~############
+######~METADATA~################
 #proj = qdGit
 #git = github.com
 #author = glennlopez
 #filename = push.sh
 #version = 0.8
 #debug = 0
-############################
+################################
+# DO NOT REMOVE/DELETE METADATA
 
-# Text formatting
+# Text formatting (may not work for all linuxboxes - tests to see which flavors work)
 RCol='\e[0m'
 Bla='\e[0;30m';     BBla='\e[1;30m';    UBla='\e[4;30m';    IBla='\e[0;90m';    BIBla='\e[1;90m';   On_Bla='\e[40m';    On_IBla='\e[0;100m';
 Red='\e[0;31m';     BRed='\e[1;31m';    URed='\e[4;31m';    IRed='\e[0;91m';    BIRed='\e[1;91m';   On_Red='\e[41m';    On_IRed='\e[0;101m';
@@ -25,6 +26,7 @@ Whi='\e[0;37m';     BWhi='\e[1;37m';    UWhi='\e[4;37m';    IWhi='\e[0;97m';    
 	error404=$(echo -e "${BRed}[!]${Whi} No network connection")
 
 # Fetch script version
+	#// change this so the version is directly sent to the variable instead of making tmp files
         awk '{ if ($1 ~ /#version/) print local $3}' push.sh > tmp
         loc_ver=$(<tmp)
 
@@ -57,6 +59,7 @@ function auto_update(){
 	fi
 
 	# post update routine
+	#// should check to see if excecutable before excecuting commnd
 	chmod +x push.sh
 }
 
