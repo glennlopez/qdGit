@@ -1,14 +1,14 @@
 #!/bin/bash
 
-######~METADATA~################
-#proj = qdGit
-#git = github.com
-#author = glennlopez
-#filename = push.sh
-#version = 0.8
-#debug = 0
-################################
-# DO NOT REMOVE/DELETE METADATA
+######~METADATA~#################
+#proj 		= qdGit
+#git 		= github.com
+#author		= glennlopez
+#filename 	= push.sh
+#version 	= 0.8
+#debug 		= 0
+#################################
+# DO NOT REMOVE/DELETE METADATA #
 
 # Text formatting (may not work for all linuxboxes - tests to see which flavors work)
 RCol='\e[0m'
@@ -72,7 +72,7 @@ function init_setup(){
 function push_all(){
         clear
         txtHeader
-        echo -e -n "${BGre}[x]${Whi}"
+        echo -e -n "${BGre}[!]${Whi}"
         echo -n " Describe your update: "
         read comment
         git add *
