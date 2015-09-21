@@ -9,7 +9,7 @@
 #debug = 0
 ############################
 
-# Colored text formatting
+# Text formatting
 RCol='\e[0m'
 Bla='\e[0;30m';     BBla='\e[1;30m';    UBla='\e[4;30m';    IBla='\e[0;90m';    BIBla='\e[1;90m';   On_Bla='\e[40m';    On_IBla='\e[0;100m';
 Red='\e[0;31m';     BRed='\e[1;31m';    URed='\e[4;31m';    IRed='\e[0;91m';    BIRed='\e[1;91m';   On_Red='\e[41m';    On_IRed='\e[0;101m';
@@ -24,22 +24,19 @@ Whi='\e[0;37m';     BWhi='\e[1;37m';    UWhi='\e[4;37m';    IWhi='\e[0;97m';    
 	error503=$(echo "Failed to fetch")
 	error404=$(echo -e "${BRed}[!]${Whi} No network connection")
 
-# Check network before fetching version number
-wget --spider --quiet https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh
+# Fetch script version
+        awk '{ if ($1 ~ /#version/) print local $3}' push.sh > tmp
+        loc_ver=$(<tmp)
 
-if [ "$?" == 0 ]; then
+	wget --spider --quiet https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh
+	if [ "$?" == 0 ]; then
 
-	# store local version to variable
-	awk '{ if ($1 ~ /#version/) print local $3}' push.sh > tmp
-	loc_ver=$(<tmp)
-
-	# store remote version to variable
-	curl --silent -q -k https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh | awk '{ if ($1 ~ /#version/) print local $3}' > tmp
-	rem_ver=$(<tmp)
-else
-	loc_ver=$error503
-	rem_ver=$error503
-fi
+		# store remote version to variable
+		curl --silent -q -k https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh | awk '{ if ($1 ~ /#version/) print local $3}' > tmp
+		rem_ver=$(<tmp)
+	else
+		rem_ver=$error503
+	fi
 
 # remove tmp file used to store version number
 rm -f tmp
@@ -49,7 +46,7 @@ rm -f tmp
 # SUBROUTINES
 ##########################
 
-# Script update routine
+# Auto update routine
 function auto_update(){
 	# compare versions
 	if [[ $loc_ver < $rem_ver ]]; then
@@ -73,7 +70,7 @@ function push_all(){
         clear
         txtHeader
         echo -e -n "${BGre}[x]${Whi}"
-        echo -n " Describe your commit: "
+        echo -n " Describe your update: "
         read comment
         git add *
         git add -u
@@ -104,28 +101,28 @@ function pause(){
 
 
 ##########################
-# SCRIPT ROUTINE
+# MAIN ROUTINE
 ##########################
 
 # Don't run script unless connection is established
 wget --spider --quiet https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh
 if [ "$?" == 0 ]; then
-	# Run without autoupdate
+	# Option: run main routine with autoupdate disabled
 	if [ "$1" = -noupdate ]; then
 		echo 'no updates'
-
+	# Show version info
 	elif [ "$1" = -ver ]; then
 		echo 'Local version: '$loc_ver
 		echo 'Remote version: '$rem_ver
 
-		# Force an update
+	# Option: run main routine and force an update
 	elif [ "$1" = -update ]; then
 		rm -f push.sh
 		wget --quiet https://raw.githubusercontent.com/glennlopez/qdGit/development/push.sh
 		chmod +x push.sh
-		echo "Script forced to update!"
+		echo "Forced update applied!"
 
-		# Default task
+	# Default task
 	else
 		push_all
 		auto_update
